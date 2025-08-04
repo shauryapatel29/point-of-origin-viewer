@@ -9,23 +9,22 @@
       margin: 0;
       padding: 0;
       background-color: #fff;
+      overflow-x: auto;
+      overflow-y: hidden;
       height: 100vh;
-      overflow: hidden;
-      font-family: sans-serif;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x pinch-zoom;
     }
 
     .container {
-      width: 100vw;
+      display: flex;
+      align-items: center;
       height: 100vh;
-      overflow-x: auto;
-      overflow-y: hidden;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-      touch-action: pan-y;
     }
 
     .container img {
       height: 100vh;
+      min-width: 150vw; /* Forces horizontal overflow */
       display: inline-block;
     }
 
