@@ -2,29 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Prevent zooming and scaling bugs on mobile Chrome -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>The Point of Origin Viewer</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background-color: #fff;
+      height: 100vh;
       overflow-x: auto;
       overflow-y: hidden;
-      height: 100vh;
-      -webkit-overflow-scrolling: touch;
-      touch-action: pan-y;
+      background-color: #fff;
       font-family: sans-serif;
     }
 
-    .container {
-      width: max-content;
+    .scroll-wrapper {
+      width: 100%;
       height: 100vh;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .container {
+      display: inline-block;
+      height: 100vh;
+      white-space: nowrap;
       position: relative;
     }
 
-    .container img {
+    img {
       height: 100vh;
       width: auto;
       display: block;
@@ -55,15 +60,16 @@
     }
   </style>
   <script>
-    // Disable right-click
     document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
     });
   </script>
 </head>
 <body>
-  <div class="container">
-    <img src="images/origin.png" alt="The Point of Origin" />
+  <div class="scroll-wrapper">
+    <div class="container">
+      <img src="images/origin.png" alt="The Point of Origin" />
+    </div>
   </div>
   <div class="watermark">© Shaurya Patel, 2025</div>
   <footer>
