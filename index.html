@@ -2,46 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>The Point of Origin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Point of Origin Viewer</title>
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
-      background-color: #000;
-      overflow: hidden;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      touch-action: pan-y;
-    }
-
-    .scroll-container {
-      width: 100%;
-      height: 100%;
       overflow-x: auto;
       overflow-y: hidden;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
+      background-color: #fff;
+      font-family: sans-serif;
     }
-
-    .graphic {
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+    img {
       display: block;
-      height: 100%;
-      max-height: 100vh;
+      height: 100vh;
+    }
+    .watermark {
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.6);
+      padding: 3px 6px;
+      border-radius: 4px;
+      user-select: none;
+      pointer-events: none;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background-color: #f5f5f5;
+      color: #555;
+      padding: 6px;
+      font-size: 12px;
     }
   </style>
   <script>
-    document.addEventListener("contextmenu", function (e) {
+    document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
     });
   </script>
 </head>
 <body>
-  <div class="scroll-container">
-    <img class="graphic" src="images/origin.png" alt="The Point of Origin Graphic" />
+  <div class="container">
+    <img src="images/origin.png" alt="The Point of Origin" />
+    <div class="watermark">© Shaurya Patel, 2025</div>
   </div>
+  <footer>
+    Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a> | No commercial use or modification allowed
+  </footer>
 </body>
 </html>
