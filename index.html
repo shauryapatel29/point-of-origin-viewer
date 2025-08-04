@@ -2,35 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Disable zooming to fix mobile Chrome rendering issue -->
+  <!-- Prevent pinch-zoom to avoid rendering bugs on mobile Chrome -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>The Point of Origin Viewer</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
+      overflow: hidden;
+      height: 100%;
       background-color: #fff;
+      font-family: sans-serif;
+    }
+
+    .scroll-container {
+      width: 100vw;
+      height: 100vh;
       overflow-x: auto;
       overflow-y: hidden;
-      height: 100vh;
       -webkit-overflow-scrolling: touch;
-      touch-action: pan-y;
+      white-space: nowrap;
     }
 
-    .container {
-      display: flex;
-      align-items: center;
+    .graphic {
       height: 100vh;
-    }
-
-    .container img {
-      height: 100vh;
-      width: auto;
       display: block;
     }
 
     .watermark {
-      position: fixed;
+      position: absolute;
       bottom: 10px;
       right: 15px;
       font-size: 14px;
@@ -38,6 +38,7 @@
       background: rgba(255, 255, 255, 0.6);
       padding: 3px 6px;
       border-radius: 4px;
+      user-select: none;
       pointer-events: none;
     }
 
@@ -51,13 +52,30 @@
       padding: 6px;
       font-size: 12px;
     }
+
+    /* Disable selection and right-click */
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    html, body {
+      touch-action: pan-y;
+    }
   </style>
+  <script>
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+  </script>
 </head>
 <body>
-  <div class="container">
-    <img src="images/origin.png" alt="The Point of Origin" />
+  <div class="scroll-container">
+    <img class="graphic" src="images/origin.png" alt="The Point of Origin" />
+    <div class="watermark">© Shaurya Patel, 2025</div>
   </div>
-  <div class="watermark">© Shaurya Patel, 2025</div>
   <footer>
     Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a> | No commercial use or modification allowed
   </footer>
