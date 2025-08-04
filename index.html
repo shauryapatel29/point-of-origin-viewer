@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <!-- Disable zooming to fix mobile Chrome rendering issue -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>The Point of Origin Viewer</title>
   <style>
     html, body {
@@ -13,7 +14,7 @@
       overflow-y: hidden;
       height: 100vh;
       -webkit-overflow-scrolling: touch;
-      touch-action: pan-x pinch-zoom;
+      touch-action: pan-y;
     }
 
     .container {
@@ -24,8 +25,8 @@
 
     .container img {
       height: 100vh;
-      min-width: 150vw; /* Forces horizontal overflow */
-      display: inline-block;
+      width: auto;
+      display: block;
     }
 
     .watermark {
