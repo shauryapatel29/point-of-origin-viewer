@@ -2,28 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Prevent zooming and scaling bugs on mobile Chrome -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>The Point of Origin Viewer</title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
+      background-color: #fff;
       overflow-x: auto;
       overflow-y: hidden;
-      background-color: #fff;
+      height: 100vh;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
       font-family: sans-serif;
     }
+
     .container {
+      width: max-content;
+      height: 100vh;
       position: relative;
-      width: 100%;
-      height: 100vh;
     }
-    img {
+
+    .container img {
+      height: 100vh;
+      width: auto;
       display: block;
-      height: 100vh;
     }
+
     .watermark {
-      position: absolute;
+      position: fixed;
       bottom: 10px;
       right: 15px;
       font-size: 14px;
@@ -34,6 +42,7 @@
       user-select: none;
       pointer-events: none;
     }
+
     footer {
       position: fixed;
       bottom: 0;
@@ -46,6 +55,7 @@
     }
   </style>
   <script>
+    // Disable right-click
     document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
     });
@@ -54,8 +64,8 @@
 <body>
   <div class="container">
     <img src="images/origin.png" alt="The Point of Origin" />
-    <div class="watermark">© Shaurya Patel, 2025</div>
   </div>
+  <div class="watermark">© Shaurya Patel, 2025</div>
   <footer>
     Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a> | No commercial use or modification allowed
   </footer>
